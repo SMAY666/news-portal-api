@@ -1,0 +1,9 @@
+{
+  "watch": [
+    "./src",
+    "./*.json",
+    "./.env"
+  ],
+  "ext": "ts,json",
+  "exec": "yarn build:dev && yarn start"
+}

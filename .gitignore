@@ -1,0 +1,12 @@
+# MacOS
+/**/.DS_Store
+
+# Development
+/.idea
+
+# Dependencies
+/yarn-error.log
+/node_modules
+
+# Product
+/dist

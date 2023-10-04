@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    /*** Type CheckingType Checking ***********************************************************************************/
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    /*** Interop Constraints ******************************************************************************************/
+    "skipLibCheck": true,
+    /*** Projects *****************************************************************************************************/
+    "incremental": false
+  }
+}

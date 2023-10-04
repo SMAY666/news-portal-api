@@ -1,0 +1,35 @@
+{
+  "extends": [
+    "./tsconfig.checks.json",
+    "./tsconfig.paths.json"
+  ],
+  "compilerOptions": {
+    /*** Modules ******************************************************************************************************/
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "rootDir": "./src",
+    /*** Emit *********************************************************************************************************/
+    "declaration": false,
+    "emitDeclarationOnly": false,
+    "outDir": "./dist",
+    "removeComments": false,
+    /*** JavaScript Support *******************************************************************************************/
+    "allowJs": false,
+    /*** Interop Constraints ******************************************************************************************/
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    /*** Language and Environment *************************************************************************************/
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [
+      "ESNext"
+    ],
+    "target": "ES6",
+    /*** Output Formatting ********************************************************************************************/
+    "noErrorTruncation": true,
+    /*** Completeness *************************************************************************************************/
+    "skipLibCheck": true
+  }
+}
