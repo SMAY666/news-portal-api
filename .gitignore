@@ -12,3 +12,4 @@
 # Product
 /dist
 /log.txt
+/.env
