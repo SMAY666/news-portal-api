@@ -3,6 +3,7 @@
 
 # Development
 /.idea
+/.env.example
 
 # Dependencies
 /yarn-error.log
@@ -10,3 +11,4 @@
 
 # Product
 /dist
+/log.txt
