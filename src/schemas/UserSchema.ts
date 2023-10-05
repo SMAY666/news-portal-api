@@ -21,6 +21,10 @@ export const userSchema = new Schema<UserAttributes>({
     },
     avatar: {
         type: String,
+        required: true,
+    },
+    favorites: {
+        type: [String],
         required: false,
     },
 });

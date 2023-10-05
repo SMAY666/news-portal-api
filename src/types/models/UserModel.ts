@@ -3,4 +3,5 @@ export type UserAttributes = {
     passwordHash: string
     isOwner: boolean
     avatar: string
+    favorites: string[]
 }
