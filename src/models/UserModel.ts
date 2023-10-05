@@ -3,4 +3,4 @@ import {UserAttributes} from '../types/models/UserModel';
 import {userSchema} from '../schemas/UserSchema';
 
 
-export const userModel = model<UserAttributes>('users', userSchema);
+export const UserModel = model<UserAttributes>('users', userSchema);
