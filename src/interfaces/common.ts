@@ -18,6 +18,8 @@ declare global {
             MONGO_DB_PASSWORD: string
             MONGO_DB_AUTO_INDEX: boolean
             MONGO_DB_AUTO_CREATE: boolean
+
+            JWT_SALT: string
         }
     }
 }

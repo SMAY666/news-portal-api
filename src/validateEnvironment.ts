@@ -44,5 +44,7 @@ Object.assign(
         MONGO_DB_AUTO_CREATE: bool({
             default: true,
         }),
+
+        JWT_SALT: str(),
     }),
 );
