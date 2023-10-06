@@ -10,6 +10,8 @@ declare global {
             LOGGING_LEVEL: RequiredProperty<LoggerOptions, 'level'>['level']
             LOG_FILE_PATH: string
 
+            CLIENT_URL: string
+
             MONGO_DB_HOST: string
             MONGO_DB_PORT: number
             MONGO_DB_BUFFER_COMMANDS: boolean

@@ -1,10 +1,18 @@
 import './validateEnvironment';
+
 import Express from 'express';
+import cors from 'cors';
+
 import {mongodbConnection} from '@configs/mongodbConnection';
 import {logger} from '@utils/logger';
 
 
-const server = Express();
+const server = Express()
+    .use(Express.json)
+    .use(Express.urlencoded({extended: true}))
+    .use(cors({
+        origin: process.env.CLIENT_URL,
+    }))
 
 mongodbConnection.connect()
     .then()

@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import 'module-alias/register';
 
-import {cleanEnv, str, host, port, bool} from 'envalid';
+import {cleanEnv, str, host, port, bool, url} from 'envalid';
 
 
 Object.assign(
@@ -22,6 +22,10 @@ Object.assign(
         }),
         PORT: port({
             default: 8001,
+        }),
+
+        CLIENT_URL: url({
+            default: 'http://localhost:3000',
         }),
 
         MONGO_DB_HOST: host({
