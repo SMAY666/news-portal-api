@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt';
-import {UserAttributes, UserCreationAttribute} from '../types/models/UserModel';
+import {UserAttributes, UserCreationAttributes} from '../types/models/UserModel';
 import {UserModel} from '@models/UserModel';
+import {ERRORS} from '@constants/errors';
+import {CustomError} from '../types/common';
 
 
 class AuthService {
@@ -8,14 +10,14 @@ class AuthService {
         return bcrypt.hashSync(password, process.env.JWT_SALT);
     }
 
-    public async signUp(data: UserCreationAttribute, confirmPassword: string): Promise<UserAttributes> {
-        const userExist = await UserModel.find({email: data.email});
+    public async signUp(data: UserCreationAttributes): Promise<UserAttributes | CustomError> {
+        const userExist = await UserModel.exists({email: data.email});
         if (userExist) {
-            throw Error('Пользователь с таким email уже существует');
+            return ERRORS.USER.ALREADY_EXIST;
         }
 
-        if (confirmPassword !== data.password) {
-            throw Error('Пароли не совпадают');
+        if (data.confirmPassword !== data.password) {
+            return ERRORS.USER.NOT_FOUND;
         }
 
         const passwordHash = this.getHash(data.password);
@@ -25,6 +27,7 @@ class AuthService {
             passwordHash,
             isOwner: data.isOwner,
             avatar: data.avatar,
+            favorites: [],
         });
     }
 }

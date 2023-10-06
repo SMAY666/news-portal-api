@@ -8,5 +8,21 @@
   "extends": [
     "eslint-config-bondarenko-style/recommended",
     "eslint-config-bondarenko-style/typescript"
-  ]
+  ],
+  "rules": {
+    "max-len": [
+      "warn",
+      {
+        "code": 150,
+        "ignoreUrls": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": true
+      }
+    ]
+  }
 }

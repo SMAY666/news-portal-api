@@ -7,6 +7,7 @@ export type UserAttributes = {
     favorites: string[]
 }
 
-export type UserCreationAttribute = Omit<UserAttributes, '_id' | 'passwordHash'> & {
+export type UserCreationAttributes = Omit<UserAttributes, '_id' | 'passwordHash' | 'favorites'> & {
     password: string
+    confirmPassword: string
 };

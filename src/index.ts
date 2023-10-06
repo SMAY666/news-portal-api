@@ -5,14 +5,17 @@ import cors from 'cors';
 
 import {mongodbConnection} from '@configs/mongodbConnection';
 import {logger} from '@utils/logger';
+import {apiRouter} from './routes';
 
 
 const server = Express()
-    .use(Express.json)
+    .use(Express.json())
     .use(Express.urlencoded({extended: true}))
     .use(cors({
         origin: process.env.CLIENT_URL,
     }))
+    .use('/api', apiRouter);
+
 
 mongodbConnection.connect()
     .then()

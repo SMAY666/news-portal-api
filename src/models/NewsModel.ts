@@ -1,6 +1,6 @@
 import {model} from 'mongoose';
-import {newSchema} from '../schemas/NewSchema';
+import {newsSchema} from '../schemas/NewsSchema';
 import {NewsAttributes} from '../types/models/NewsModel';
 
 
-const NewsModel = model<NewsAttributes>('news', newSchema);
+const NewsModel = model<NewsAttributes>('news', newsSchema);

@@ -3,7 +3,7 @@ import {NewsAttributes} from '../types/models/NewsModel';
 import {ThemeEnum} from '@interfaces/models/newsModel';
 
 
-export const newSchema = new Schema<NewsAttributes>({
+export const newsSchema = new Schema<NewsAttributes>({
     createdAt: {
         type: Date,
         required: true,
