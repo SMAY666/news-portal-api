@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
-import {UserAttributes, UserCreationAttributes} from '../types/models/UserModel';
+import {UserCreationAttributes} from '../types/models/UserModel';
 import {UserModel} from '@models/UserModel';
 import {ERRORS} from '@constants/errors';
-import {CustomError} from '../types/common';
+import {logger} from '@utils/logger';
 
 
 class AuthService {
@@ -10,24 +10,37 @@ class AuthService {
         return bcrypt.hashSync(password, process.env.JWT_SALT);
     }
 
-    public async signUp(data: UserCreationAttributes): Promise<UserAttributes | CustomError> {
-        const userExist = await UserModel.exists({email: data.email});
-        if (userExist) {
-            return ERRORS.USER.ALREADY_EXIST;
-        }
+    public async signUp(data: UserCreationAttributes) {
+        return new Promise((resolve, reject) => {
+            UserModel.findOne({email: data.email})
+                .then((user) => {
+                    if (user) {
+                        reject(ERRORS.USER.ALREADY_EXIST);
+                        return;
+                    }
 
-        if (data.confirmPassword !== data.password) {
-            return ERRORS.USER.NOT_FOUND;
-        }
+                    if (data.confirmPassword !== data.password) {
+                        reject(ERRORS.USER.PASSWORD_NOT_CONFIRMED);
+                        return;
+                    }
 
-        const passwordHash = this.getHash(data.password);
+                    const passwordHash = this.getHash(data.password);
 
-        return await UserModel.create({
-            email: data.email,
-            passwordHash,
-            isOwner: data.isOwner,
-            avatar: data.avatar,
-            favorites: [],
+                    return UserModel.create({
+                        email: data.email,
+                        passwordHash,
+                        isOwner: data.isOwner,
+                        avatar: data.avatar,
+                        favorites: [],
+                    });
+                })
+                .then((newUser) => {
+                    resolve(newUser);
+                })
+                .catch((err) => {
+                    logger.error('[sign-up]: Failed to execute query', {err});
+                    reject(err);
+                });
         });
     }
 }
