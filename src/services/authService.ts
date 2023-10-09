@@ -11,37 +11,31 @@ class AuthService {
     }
 
     public async signUp(data: UserCreationAttributes) {
-        return new Promise((resolve, reject) => {
-            UserModel.findOne({email: data.email})
-                .then((user) => {
-                    if (user) {
-                        reject(ERRORS.USER.ALREADY_EXIST);
-                        return;
-                    }
+        return UserModel.findOne({email: data.email})
+            .then((user) => {
+                if (user) {
+                    throw ERRORS.USER.ALREADY_EXIST;
+                }
 
-                    if (data.confirmPassword !== data.password) {
-                        reject(ERRORS.USER.PASSWORD_NOT_CONFIRMED);
-                        return;
-                    }
+                if (data.confirmPassword !== data.password) {
+                    throw ERRORS.USER.PASSWORD_NOT_CONFIRMED;
+                }
 
-                    const passwordHash = this.getHash(data.password);
+                const passwordHash = this.getHash(data.password);
 
-                    return UserModel.create({
-                        email: data.email,
-                        passwordHash,
-                        isOwner: data.isOwner,
-                        avatar: data.avatar,
-                        favorites: [],
-                    });
-                })
-                .then((newUser) => {
-                    resolve(newUser);
-                })
-                .catch((err) => {
-                    logger.error('[sign-up]: Failed to execute query', {err});
-                    reject(err);
+                return UserModel.create({
+                    email: data.email,
+                    passwordHash,
+                    isOwner: data.isOwner,
+                    avatar: data.avatar,
+                    favorites: [],
                 });
-        });
+            })
+            .then((newUser) => newUser)
+            .catch((err) => {
+                logger.error('[sign-up]: Failed to execute query', {err});
+                throw err;
+            });
     }
 }
 
