@@ -6,6 +6,7 @@ import cors from 'cors';
 import {mongodbConnection} from '@configs/mongodbConnection';
 import {logger} from '@utils/logger';
 import {apiRouter} from './routes';
+import {getErrorMessage} from '@utils/error';
 
 
 const server = Express()
@@ -14,7 +15,13 @@ const server = Express()
     .use(cors({
         origin: process.env.CLIENT_URL,
     }))
-    .use('/api', apiRouter);
+    .use('/api', apiRouter)
+    // @ts-ignore
+    .use((err, req, res, next) => {
+        if (err) {
+            res.status(err.status ?? 500).json(getErrorMessage(err));
+        }
+    });
 
 
 mongodbConnection.connect()
