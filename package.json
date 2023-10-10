@@ -37,8 +37,7 @@
     "@repositories": "./dist/repositories",
     "@server": "./dist/server.js",
     "@services": "./dist/services",
-    "@utils": "./dist/utils",
-    "@types": "./dist/types"
+    "@utils": "./dist/utils"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

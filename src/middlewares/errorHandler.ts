@@ -1,9 +1,10 @@
 import {NextFunction, Request, Response} from 'express';
 import {getErrorMessage} from '@utils/error';
+import {ExtendedErrorType} from '@interfaces/common';
 
 
-export function errorHandler(err: any, req: Request, res: Response, next: NextFunction) {
+export function errorHandler(err: ExtendedErrorType, req: Request, res: Response, next: NextFunction) {
     if (err) {
-        res.status(err.status ?? 500).json(getErrorMessage(err));
+        res.status(err.statusCode ?? 500).json(getErrorMessage(err));
     }
 }

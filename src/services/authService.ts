@@ -3,6 +3,8 @@ import {UserCreationAttributes} from '../types/models/UserModel';
 import {UserModel} from '@models/UserModel';
 import {ERRORS} from '@constants/errors';
 import {logger} from '@utils/logger';
+import {CustomError} from '@utils/common';
+import {getErrorMessage} from '@utils/error';
 
 
 class AuthService {
@@ -14,11 +16,11 @@ class AuthService {
         return UserModel.findOne({email: data.email})
             .then((user) => {
                 if (user) {
-                    throw ERRORS.USER.ALREADY_EXIST;
+                    throw CustomError(ERRORS.USER.ALREADY_EXIST, 403);
                 }
 
                 if (data.confirmPassword !== data.password) {
-                    throw ERRORS.USER.PASSWORD_NOT_CONFIRMED;
+                    throw CustomError(ERRORS.USER.PASSWORD_NOT_CONFIRMED, 403);
                 }
 
                 const passwordHash = this.getHash(data.password);

@@ -1,6 +1,18 @@
 import {LoggerOptions} from '@utils/logger';
 import {RequiredProperty} from '@utils/types';
 
+
+interface ExpressError extends Error {
+    code: string
+    name: string
+    statusCode?: number
+}
+
+
+export type ExtendedErrorType = ExpressError & {
+    data: any
+}
+
 declare global {
     namespace NodeJS {
         interface ProcessEnv {

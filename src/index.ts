@@ -16,7 +16,6 @@ const server = Express()
         origin: process.env.CLIENT_URL,
     }))
     .use('/api', apiRouter)
-    // @ts-ignore
     .use(errorHandler);
 
 
