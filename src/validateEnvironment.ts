@@ -28,6 +28,10 @@ Object.assign(
             default: 'http://localhost:3000',
         }),
 
+        JWT_SECRET: str({
+            default: 'test',
+        }),
+
         MONGO_DB_HOST: host({
             default: '127.0.0.1',
         }),

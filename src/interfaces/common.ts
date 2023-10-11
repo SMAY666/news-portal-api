@@ -24,6 +24,8 @@ declare global {
 
             CLIENT_URL: string
 
+            JWT_SECRET: string
+
             MONGO_DB_HOST: string
             MONGO_DB_PORT: number
             MONGO_DB_BUFFER_COMMANDS: boolean
