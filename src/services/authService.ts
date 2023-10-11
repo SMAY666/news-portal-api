@@ -44,7 +44,7 @@ class AuthService {
                     email: data.email,
                     passwordHash,
                     isOwner: data.isOwner,
-                    avatar: data.avatar,
+                    avatar: data.avatar ?? 'defaultPicture',
                     favorites: [],
                 });
             })
