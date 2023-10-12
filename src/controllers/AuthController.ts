@@ -1,21 +1,20 @@
-import {NextFunction, Request, Response} from 'express';
 import {authService} from '@services/authService';
-import {UserCreationAttributes} from '../types/models/UserModel';
-import {SignInRequest} from '../types/requests/auth/signIn';
+import {SignInRequest, SignUpRequest} from '../types/requests/auth';
+import {CustomRequestHandler} from '@utils/CustomRequestHandler';
 
 
 class AuthController {
-    public signUp(request: Request<never, never, UserCreationAttributes>, response: Response, next: NextFunction) {
+    public signUp: CustomRequestHandler<SignUpRequest> = (request, response, next) => {
         authService.signUp(request.body)
             .then((newUser) => response.status(201).json(newUser))
             .catch(next);
-    }
+    };
 
-    public signIn(request: SignInRequest, response: Response, next: NextFunction) {
+    public signIn: CustomRequestHandler<SignInRequest> = (request, response, next) => {
         authService.signIn(request.body.email, request.body.password)
             .then((token) => response.status(200).json(token))
             .catch(next);
-    }
+    };
 }
 
 export const controller = new AuthController();
