@@ -7,6 +7,7 @@ import {ERRORS} from '@constants/errors';
 import {logger} from '@utils/logger';
 import {CustomError} from '@utils/common';
 import {HOUR} from '@constants/time';
+import {USER_DEFAULT_AVATAR} from '@constants/storage';
 
 
 class AuthService {
@@ -44,7 +45,7 @@ class AuthService {
                     email: data.email,
                     passwordHash,
                     isOwner: data.isOwner,
-                    avatar: data.avatar ?? 'defaultPicture',
+                    avatar: data.avatar !== undefined ? data.avatar.filename : USER_DEFAULT_AVATAR,
                     favorites: [],
                 });
             })

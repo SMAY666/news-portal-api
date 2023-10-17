@@ -3,7 +3,6 @@ import {UserAttributes} from '../types/models/UserModel';
 import validator from 'validator';
 
 
-
 export const userSchema = new Schema<UserAttributes>({
     email: {
         type: String,
