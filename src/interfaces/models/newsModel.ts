@@ -1,0 +1,16 @@
+export enum ThemeEnum {
+    INCIDENTS = 'Происшествия',
+    CARS = 'Авто',
+    BUSINESS = 'Бизнес',
+    HEALTH = 'Здоровье',
+    CRYPTO = 'Крипто',
+    REALTY = 'Недвижимость',
+    EDUCATION = 'Образование',
+    POLITICS = 'Политика',
+    TOURISM = 'Туризм',
+    SHOW_BUSINESS = 'Шоу-бизнес',
+    SPORT = 'Спорт',
+    STYLE = 'Стиль',
+    SCIENCE_AND_TECHNOLOGY = 'Наука и технологии',
+    ECONOMY = 'Экономика',
+}

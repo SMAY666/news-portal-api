@@ -10,7 +10,7 @@
       "@repositories/*": ["./src/repositories/*"],
       "@server": ["./src/server.ts"],
       "@services/*": ["./src/services/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
     }
   }
 }
