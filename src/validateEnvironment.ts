@@ -32,6 +32,14 @@ Object.assign(
             default: 'test',
         }),
 
+        MAIN_OWNER_EMAIL: str({
+            default: 'admin',
+        }),
+
+        MAIN_OWNER_PASSWORD: str({
+            default: 'admin',
+        }),
+
         MONGO_DB_HOST: host({
             default: '127.0.0.1',
         }),

@@ -3,11 +3,12 @@ export type UserAttributes = {
     email: string
     passwordHash: string
     isOwner: boolean
-    avatar: Express.Multer.File
+    avatar: string
     favorites: string[]
 }
 
-export type UserCreationAttributes = Omit<UserAttributes, '_id' | 'passwordHash' | 'favorites'> & {
+export type UserCreationAttributes = Omit<UserAttributes, '_id' | 'passwordHash' | 'favorites' | 'avatar'> & {
+    avatar: Express.Multer.File
     password: string
     confirmPassword: string
 };

@@ -26,6 +26,9 @@ declare global {
 
             JWT_SECRET: string
 
+            MAIN_OWNER_EMAIL: string
+            MAIN_OWNER_PASSWORD: string
+
             MONGO_DB_HOST: string
             MONGO_DB_PORT: number
             MONGO_DB_BUFFER_COMMANDS: boolean
