@@ -18,11 +18,14 @@ export function checkOwner() {
         .then((user) => {
             if (!user) {
                 createMainOwner()
-                    .then(() => logger.info('[ownerChecker]: Owner created successfully'))
-                    .catch((err) => logger.error('[ownerChecker]: Failed to create owner', {err}));
+                    .then(() => logger.info('[checkOwner]: Owner created successfully'))
+                    .catch((err) => {
+                        logger.fatal('[checkOwner]: Failed to create owner', {err});
+                        process.exit(1);
+                    });
             }
         })
         .catch((err) => {
-            logger.error('[ownerChecker]: Something was wrong', {err});
+            logger.error('[checkOwner]: Something was wrong', {err});
         });
 }
