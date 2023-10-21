@@ -2,6 +2,7 @@ import {ThemeEnum} from '@interfaces/models/newsModel';
 
 
 export type NewsAttributes = {
+    _id: string
     createdAt: Date
     theme: ThemeEnum
     coverPaths: string[]
@@ -14,3 +15,5 @@ export type NewsAttributes = {
     }
     favouritesCount: number
 }
+
+export type NewsCreationAttribute = Omit<NewsAttributes, '_id' | 'createdAt' | 'reactions'>

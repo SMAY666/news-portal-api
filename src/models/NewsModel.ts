@@ -3,4 +3,4 @@ import {newsSchema} from '../schemas/NewsSchema';
 import {NewsAttributes} from '../types/models/NewsModel';
 
 
-const NewsModel = model<NewsAttributes>('news', newsSchema);
+export const NewsModel = model<NewsAttributes>('news', newsSchema);
